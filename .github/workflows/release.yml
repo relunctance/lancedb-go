@@ -784,6 +784,9 @@ jobs:
             echo "Invalid version format: $VERSION"
             exit 1
           fi
+          # Append unique suffix to avoid tag collision with upstream
+          SUFFIX="-fork-$(date +%Y%m%d%H%M%S)"
+          VERSION="${VERSION}${SUFFIX}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "📋 Release version: $VERSION"
 
